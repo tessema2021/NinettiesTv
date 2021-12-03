@@ -50,8 +50,16 @@ namespace NinetiesTV
         }
 
         // 2. Return a list of show names ordered alphabetically.
+        //list.OrderByDescending(x => x.AVC)
+        //    .ToList();
         static List<string> NamesAlphabetically(List<Show> shows)
         {
+            Console.WriteLine("Alphabetically");
+            var names = shows.OrderBy(s => s.Name).ToList();
+            foreach (var name in names)
+            {
+                Console.WriteLine(name.Name);
+            }
             throw new NotImplementedException();
         }
 
