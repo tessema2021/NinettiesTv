@@ -47,14 +47,16 @@ namespace NinetiesTV
         static List<string> Names(List<Show> shows)
         {
             return shows.Select(s => s.Name).ToList(); // Looks like this one's already done!
+
+            throw new NotImplementedException();
         }
 
         // 2. Return a list of show names ordered alphabetically.
-        //list.OrderByDescending(x => x.AVC)
-        //    .ToList();
+
         static List<string> NamesAlphabetically(List<Show> shows)
         {
-            Console.WriteLine("Alphabetically");
+            Console.WriteLine("NamesAlphabetically");
+
             var names = shows.OrderBy(s => s.Name).ToList();
             foreach (var name in names)
             {
@@ -66,12 +68,16 @@ namespace NinetiesTV
         // 3. Return a list of shows ordered by their IMDB Rating with the highest rated show first.
         static List<Show> ShowsByPopularity(List<Show> shows)
         {
+            Console.WriteLine("ShowsByPopularity");
+            return shows.OrderByDescending(s => s.ImdbRating).ToList();
+
             throw new NotImplementedException();
         }
 
         // 4. Return a list of shows whose title contains an & character.
         static List<Show> ShowsWithAmpersand(List<Show> shows)
         {
+            return shows.Where(s => s.Name.Contains("&")).ToList();
             throw new NotImplementedException();
         }
 
