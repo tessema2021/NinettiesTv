@@ -48,7 +48,7 @@ namespace NinetiesTV
         {
             return shows.Select(s => s.Name).ToList(); // Looks like this one's already done!
 
-            throw new NotImplementedException();
+
         }
 
         // 2. Return a list of show names ordered alphabetically.
@@ -57,12 +57,9 @@ namespace NinetiesTV
         {
             Console.WriteLine("NamesAlphabetically");
 
-            var names = shows.OrderBy(s => s.Name).ToList();
-            foreach (var name in names)
-            {
-                Console.WriteLine(name.Name);
-            }
-            throw new NotImplementedException();
+            return shows.OrderBy(s => s.Name).Select(s => s.Name).ToList();
+
+
         }
 
         // 3. Return a list of shows ordered by their IMDB Rating with the highest rated show first.
@@ -71,50 +68,54 @@ namespace NinetiesTV
             Console.WriteLine("ShowsByPopularity");
             return shows.OrderByDescending(s => s.ImdbRating).ToList();
 
-            throw new NotImplementedException();
+
         }
 
         // 4. Return a list of shows whose title contains an & character.
         static List<Show> ShowsWithAmpersand(List<Show> shows)
         {
             return shows.Where(s => s.Name.Contains("&")).ToList();
-            throw new NotImplementedException();
+
         }
 
         // 5. Return the most recent year that any of the shows aired.
         static int MostRecentYear(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows.Max(s => s.EndYear);
+
         }
 
         // 6. Return the average IMDB rating for all the shows.
         static double AverageRating(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows.Average(s => s.ImdbRating);
         }
 
         // 7. Return the shows that started and ended in the 90s.
         static List<Show> OnlyInNineties(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows
+            .Where(s => (2000 - s.StartYear <= 9 && 2000 - s.StartYear > 0) && (2000 - s.EndYear <= 9 && 2000 - s.EndYear > 0)).ToList();
+
+
         }
 
         // 8. Return the top three highest rated shows.
         static List<Show> TopThreeByRating(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows.Take(3).OrderByDescending(s => s.ImdbRating).ToList();
         }
 
         // 9. Return the shows whose name starts with the word "The".
         static List<Show> TheShows(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows.Where(s => s.Name.StartsWith("The")).ToList();
         }
 
         // 10. Return all shows except for the lowest rated show.
         static List<Show> AllButWorst(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return shows.OrderByDescending(s => s.ImdbRating).SkipLast(1).ToList();
         }
 
         // 11. Return the names of the shows that had fewer than 100 episodes.
